@@ -4,14 +4,26 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ActivityModule } from './activity/activity.module';
 import { SharedModule } from './shared/shared.module';
-import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthMiddleware } from './auth/auth.middleware';
+import { Activity } from './activity/activity.entity';
+import { UserInfo } from './user/user-info/user-info.entity';
+import { UserEntity } from './user/user.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: "mysql",
+      host: "127.0.0.1",
+      port: 3306,
+      username: "root",
+      password: "Sztubeer@123",
+      database: "nest",
+      // entities: ["dist/**/*.entity{.ts,.js}"],
+      entities: [Activity,UserInfo,UserEntity],
+      synchronize: true
+    }),
     CacheModule.register(),
     ActivityModule,
     SharedModule,
@@ -19,7 +31,7 @@ import { AuthMiddleware } from './auth/auth.middleware';
     AuthModule,
   ],
 
-  controllers: [AppController, UserController],
+  controllers: [AppController],
   providers: [AppService],
 })
 
