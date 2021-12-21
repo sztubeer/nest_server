@@ -6,7 +6,6 @@ import { ExtRequest } from './auth.interface';
 export class AuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const request:ExtRequest = context.switchToHttp().getRequest();
-
     if(request.user && request.user.id > 0) {
       return true;
     }else{

@@ -16,7 +16,6 @@ export class AuthController {
       const expiration = 3600 * 24 * 10
 
       const token = await this.tokenService.createToken(user.id, expiration)
-
       return { token, expiration }
     }
 

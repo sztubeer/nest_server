@@ -11,7 +11,6 @@ export class UserController {
   @Get()
   @ApiOperation({ summary: '显示活动列表' })
   async getAll(@Query('code') code:string) {
-      console.log(code);
     const res = await this.userService.getUserIdByCode(code);
     return res;
   }

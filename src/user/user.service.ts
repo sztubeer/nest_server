@@ -28,7 +28,7 @@ export class UserService {
   async getUserIdByCode(code: string):Promise<any> {
     const { openid, unionid } = await this.weixinService.code2Session(code);
     const user = await this.findOrCreateUser(openid, unionid);
-    return user;
+    return user.id;
   }
   
 }
