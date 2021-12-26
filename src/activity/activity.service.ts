@@ -14,12 +14,11 @@ export class ActivityService {
   ) {}
 
   create(
-    userId: number,
     createActivityDto: CreateActivityDto,
   ): Promise<Activity> {
     const activity = this.activityRepository.create();
 
-    activity.userId = userId;
+    activity.userId = createActivityDto.userId;
     activity.title = createActivityDto.title;
     activity.description = createActivityDto.description;
     activity.address = createActivityDto.address;

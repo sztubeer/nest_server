@@ -18,8 +18,7 @@ export class ActivityController {
   @Post()
   @ApiOperation({summary:'创建活动'})
   async create(@Body() createActivityDto: CreateActivityDto){
-    const userId = 123;
-    const activity = await this.activityService.create(userId, createActivityDto)
+    const activity = await this.activityService.create(createActivityDto)
     return activity.id;
   }
 

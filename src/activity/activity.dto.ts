@@ -19,7 +19,7 @@ export class CreateActivityDto {
   description: string;
   @ApiProperty({ description: '创建者' })
   @IsString()
-  userId: number;
+  userId: string;
   @ApiProperty({ description: '举办地点' })
   @IsNotEmpty({ message: '请填写举办地点' })
   address: string;
