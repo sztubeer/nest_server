@@ -5,7 +5,7 @@ import { TokenService } from './token/token.service';
 
 @Global()
 @Module({
-  imports: [TokenModule,CacheModule.register()],
+  imports: [TokenModule],
   controllers: [AuthController],
   providers:[TokenService],
   exports:[TokenService]

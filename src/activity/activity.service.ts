@@ -21,9 +21,14 @@ export class ActivityService {
     activity.userId = createActivityDto.userId;
     activity.title = createActivityDto.title;
     activity.description = createActivityDto.description;
-    activity.address = createActivityDto.address;
-    activity.cost = createActivityDto.cost;
-    activity.startTime = createActivityDto.startTime;
+    activity.location = createActivityDto.location;
+    activity.price = createActivityDto.price;
+    activity.date = createActivityDto.date;
+    activity.applies = createActivityDto.applies;
+    activity.applied = createActivityDto.applied;
+    activity.likes = createActivityDto.likes;
+    activity.liked = createActivityDto.liked;
+    activity.src = createActivityDto.src;
 
     return this.activityRepository.save(activity);
   }

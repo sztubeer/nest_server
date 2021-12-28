@@ -2,6 +2,7 @@ import { CACHE_MANAGER, Inject, Injectable } from "@nestjs/common";
 import { Cache } from 'cache-manager';
 import { v4 as uuidv4 } from 'uuid';
 
+@Injectable()
 export class TokenService {
   
   constructor(
@@ -20,8 +21,7 @@ export class TokenService {
     const token:string = uuidv4().replace(/-/gu, '');
 
     const rKey:string = this.getTokenCacheKey(token)
-    await this.cacheManager.set(rKey,userId,expiration);
-    
+    await this.cacheManager.set(rKey,userId,{ttl:expiration});
     return token;
   }
 
@@ -29,10 +29,10 @@ export class TokenService {
     const rKey = this.getTokenCacheKey(token);
 
     const result = await this.cacheManager.get(rKey);
+
     if(result){
       return Number(result);
     }
-
     return 0;
   }
 

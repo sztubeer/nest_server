@@ -9,7 +9,6 @@ export class Activity {
     type: 'varchar',
     length: 32,
     update: false,
-    unique: false,
     default: '',
     comment: '用户ID',
   })
@@ -18,8 +17,6 @@ export class Activity {
   @Column({
     type: 'varchar',
     length: 32,
-    update: false,
-    unique: false,
     default: '',
     comment: '标题',
   })
@@ -28,8 +25,6 @@ export class Activity {
   @Column({
     type: 'varchar',
     length: 256,
-    update: false,
-    unique: false,
     default: '',
     comment: '描述',
   })
@@ -38,24 +33,52 @@ export class Activity {
   @Column({
     type: 'varchar',
     length: 256,
-    update: false,
-    unique: false,
     default: '',
     comment: '地点',
   })
-  address: string;
+  location: string;
 
   @Column({
     type: 'int',
-    comment: '花费',
+    comment: '价格',
   })
-  cost: number;
+  price: number;
 
   @Column({
     type: 'varchar',
     length: 256,
-    update: false,
-    comment: '开始时间',
+    comment: '活动日期',
   })
-  startTime: string;
+  date: string;
+
+  @Column({
+    type: 'int',
+    comment: '报名数',
+  })
+  applies: number;
+
+  @Column({
+    type: 'boolean',
+    comment: '是否已报名',
+  })
+  applied: boolean;
+
+  @Column({
+    type: 'int',
+    comment: '收藏数',
+  })
+  likes: number;
+
+  @Column({
+    type: 'boolean',
+    comment: '是否收藏',
+  })
+  liked: boolean;
+
+  @Column({
+    type: 'varchar',
+    length: 256,
+    comment: '图片路径',
+  })
+  src: string;
 }

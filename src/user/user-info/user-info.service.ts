@@ -13,9 +13,9 @@ export class UserInfoService {
 
   private async getUserInfoEntity(userId: number):Promise<UserInfo> {
     const result = await this.userInfoRepository.findOne(userId)
-
     if(result) return result;
-    return this.userInfoRepository.create({id: userId})
+    const newUserInfo = this.userInfoRepository.create({id: userId});
+    return this.userInfoRepository.save(newUserInfo);
   }
 
   async getUserInfo(userId: number): Promise<UserInfo> {

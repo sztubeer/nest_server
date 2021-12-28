@@ -11,10 +11,10 @@ export class WeixinService {
 
   async code2Session(code: string): Promise<Code2SessionResponse> {
     const cacheKey = `weisin:session:code:${code}`;
-    const result = await this.cacheManager.get(cacheKey);
-    // if (result) {
-    //   return JSON.parse(result);
-    // }
+    const result:any = await this.cacheManager.get(cacheKey);
+    if (result) {
+      return result;
+    }
     const response = await axios.request<Code2SessionResponse>({
       url: 'https://api.weixin.qq.com/sns/jscode2session',
       params: {
@@ -26,7 +26,7 @@ export class WeixinService {
     });
     if (response.data.errcode) {
       // throw new HttpException(WX_INVALID_CODE, HttpStatus.NOT_ACCEPTABLE)
-      throw('报错了')
+      throw(response.data.errmsg)
     }
 
     /** 缓存时长：10 天 */

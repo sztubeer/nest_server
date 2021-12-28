@@ -2,7 +2,7 @@ import { CacheModule, Module } from '@nestjs/common';
 import { TokenService } from './token.service';
 
 @Module({
-  imports: [CacheModule.register()],
+  // imports: [CacheModule.register()],
   providers: [TokenService],
   exports: [TokenService],
 })

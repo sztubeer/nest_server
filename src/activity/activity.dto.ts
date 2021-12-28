@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class GetActivityDto {
   @ApiProperty({ description: '页数', required: false })
@@ -22,13 +22,25 @@ export class CreateActivityDto {
   userId: string;
   @ApiProperty({ description: '举办地点' })
   @IsNotEmpty({ message: '请填写举办地点' })
-  address: string;
+  location: string;
   @ApiProperty({ description: '费用' })
   @IsNotEmpty({ message: '请填写费用' })
-  cost: number;
-  @ApiProperty({ description: '开始时间' })
-  @IsNotEmpty({ message: '请填写开始时间' })
-  startTime: string;
+  price: number;
+  @ApiProperty({ description: '活动日期' })
+  @IsNotEmpty({ message: '请填写活动日期' })
+  date: string;
+  @ApiProperty({ description: '报名数' })
+  applies: number;
+  @ApiProperty({ description: '是否已报名' })
+  @IsBoolean()
+  applied: boolean;
+  @ApiProperty({ description: '收藏数' })
+  likes: number;
+  @ApiProperty({ description: '是否已收藏' })
+  liked: boolean;
+  @ApiProperty({ description: '图片路径' })
+  src: string;
+
 }
 
 export class UpdateActivityDto {
@@ -38,13 +50,27 @@ export class UpdateActivityDto {
   @ApiProperty({ description: '活动详情' })
   @IsNotEmpty({ message: '请填写活动详情' })
   description: string;
+  @ApiProperty({ description: '创建者' })
+  @IsString()
+  userId: string;
   @ApiProperty({ description: '举办地点' })
   @IsNotEmpty({ message: '请填写举办地点' })
-  address: string;
+  location: string;
   @ApiProperty({ description: '费用' })
   @IsNotEmpty({ message: '请填写费用' })
-  cost: number;
-  @ApiProperty({ description: '开始时间' })
-  @IsNotEmpty({ message: '请填写开始时间' })
-  startTime: string;
+  price: number;
+  @ApiProperty({ description: '活动日期' })
+  @IsNotEmpty({ message: '请填写活动日期' })
+  date: string;
+  @ApiProperty({ description: '报名数' })
+  applies: number;
+  @ApiProperty({ description: '是否已报名' })
+  @IsBoolean()
+  applied: boolean;
+  @ApiProperty({ description: '收藏数' })
+  likes: number;
+  @ApiProperty({ description: '是否已收藏' })
+  liked: boolean;
+  @ApiProperty({ description: '图片路径' })
+  src: string;
 }

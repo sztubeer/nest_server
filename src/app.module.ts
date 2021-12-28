@@ -24,7 +24,9 @@ import { UserEntity } from './user/user.entity';
       entities: [Activity,UserInfo,UserEntity],
       synchronize: true
     }),
-    CacheModule.register(),
+    CacheModule.register({
+      isGlobal:true
+    }),
     ActivityModule,
     SharedModule,
     UserModule,

@@ -13,7 +13,6 @@ export class UserEntity {
   @Column({
     name: 'register_time',
     type: 'datetime',
-    update: false,
     default: () => 'CURRENT_TIMESTAMP',
     comment: '注册时间',
   })
@@ -23,8 +22,7 @@ export class UserEntity {
   @Column({
     type: 'varchar',
     length: 32,
-    update: false,
-    unique: true,
+    default:'',
     comment: '微信小程序openid，用于唯一区分小程序用户',
   })
   openid: string;
@@ -33,9 +31,7 @@ export class UserEntity {
   @Column({
     type: 'varchar',
     length: 32,
-    update: false,
-    unique: true,
-    default: '',
+    default:'',
     comment: '用户在开放平台的唯一标识符',
   })
   unionid: string;
@@ -44,7 +40,7 @@ export class UserEntity {
   @Column({
     type: 'char',
     length: 11,
-    default: '',
+    default:'',
     comment: '账户手机号，可用于其他客户端登录',
   })
   phone: string;

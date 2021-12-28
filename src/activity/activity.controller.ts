@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateActivityDto, GetActivityDto, UpdateActivityDto } from './activity.dto';
 import { ActivityService } from './activity.service';
@@ -19,24 +19,36 @@ export class ActivityController {
   @ApiOperation({summary:'创建活动'})
   async create(@Body() createActivityDto: CreateActivityDto){
     const activity = await this.activityService.create(createActivityDto)
-    return activity.id;
+    return {
+      code: 200,
+      message: 'success'
+    };
   }
 
   @Get(':id')
   @ApiOperation({summary:'获取活动详情'})
-  getOne(@Param('id') id: number){
+  async getOne(@Param('id') id: number){
     return this.activityService.getOne(id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @ApiOperation({summary:'编辑活动'})
-  editOne(@Param('id') id: number, @Body() updateActivityDto: UpdateActivityDto){
-    return this.activityService.editOne(id,updateActivityDto);
+  async editOne(@Param('id') id: number, @Body() updateActivityDto: UpdateActivityDto){
+    await this.activityService.editOne(id,updateActivityDto);
+    return {
+      code: 200,
+      message: 'success',
+      data: updateActivityDto,
+    };
   }
 
   @Delete(':id')
   @ApiOperation({summary:'删除活动'})
-  deleteOne(@Param('id') id: number) {
-    return this.activityService.deleteOne(id);
+  async deleteOne(@Param('id') id: number) {
+    await this.activityService.deleteOne(id);
+    return {
+      code: 200,
+      message: 'success'
+    };
   }
 }

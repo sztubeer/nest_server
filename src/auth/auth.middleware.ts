@@ -23,7 +23,6 @@ export class AuthMiddleware implements NestMiddleware {
         user.authType = 'code'
       }
     }
-
     request.user = user;
     next();
   }
