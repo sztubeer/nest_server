@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: 'activity'})
+@Entity({ name: 'activity' })
 export class Activity {
   @PrimaryGeneratedColumn() // 创建自动生成的列
   id: number;
@@ -20,7 +20,7 @@ export class Activity {
     default: '',
     comment: '标题',
   })
-  title:string;
+  title: string;
 
   @Column({
     type: 'varchar',
@@ -81,4 +81,16 @@ export class Activity {
     comment: '图片路径',
   })
   src: string;
+
+  @Column({
+    type: 'point',
+    comment: '活动地点纬度',
+  })
+  latitude: number;
+
+  @Column({
+    type: 'point',
+    comment: '活动地点经度',
+  })
+  longitude: number;
 }

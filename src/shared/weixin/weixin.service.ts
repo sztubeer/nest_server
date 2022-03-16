@@ -11,7 +11,7 @@ export class WeixinService {
 
   async code2Session(code: string): Promise<Code2SessionResponse> {
     const cacheKey = `weisin:session:code:${code}`;
-    const result:any = await this.cacheManager.get(cacheKey);
+    const result: any = await this.cacheManager.get(cacheKey);
     if (result) {
       return result;
     }
@@ -26,11 +26,13 @@ export class WeixinService {
     });
     if (response.data.errcode) {
       // throw new HttpException(WX_INVALID_CODE, HttpStatus.NOT_ACCEPTABLE)
-      throw(response.data.errmsg)
+      throw response.data.errmsg;
     }
 
     /** 缓存时长：10 天 */
-    this.cacheManager.set(cacheKey, JSON.stringify(response.data), {ttl: 3600 * 24 * 10})
+    this.cacheManager.set(cacheKey, JSON.stringify(response.data), {
+      ttl: 3600 * 24 * 10,
+    });
 
     return response.data;
   }

@@ -13,7 +13,7 @@ export class UserInfo {
     default: '',
     comment: '用户昵称',
   })
-  nickName = ''
+  nickName = '';
 
   /** 头像的 URL */
   @Column({
@@ -23,7 +23,7 @@ export class UserInfo {
     default: '',
     comment: '头像的 URL',
   })
-  avatarUrl = ''
+  avatarUrl = '';
 
   /** 性别，0-未知，1-男性，2-女性 */
   @Column({
@@ -31,7 +31,7 @@ export class UserInfo {
     default: 0,
     comment: '性别，0-未知，1-男性，2-女性',
   })
-  gender = 0
+  gender = 0;
 
   /** 用户所在国家 */
   @Column({
@@ -40,7 +40,7 @@ export class UserInfo {
     default: '',
     comment: '用户所在国家',
   })
-  country = ''
+  country = '';
 
   /** 用户所在省份 */
   @Column({
@@ -49,7 +49,7 @@ export class UserInfo {
     default: '',
     comment: '用户所在省份',
   })
-  province = ''
+  province = '';
 
   /** 用户所在城市 */
   @Column({
@@ -58,5 +58,5 @@ export class UserInfo {
     default: '',
     comment: '用户所在城市',
   })
-  city = ''
+  city = '';
 }

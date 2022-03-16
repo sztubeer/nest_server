@@ -5,7 +5,7 @@ const services = [WeixinService];
 
 @Global()
 @Module({
-  imports:[CacheModule.register()],
+  imports: [CacheModule.register()],
   providers: services,
   exports: services,
 })

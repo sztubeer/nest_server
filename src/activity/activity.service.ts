@@ -13,9 +13,7 @@ export class ActivityService {
     private readonly activityRepository: Repository<Activity>,
   ) {}
 
-  create(
-    createActivityDto: CreateActivityDto,
-  ): Promise<Activity> {
+  create(createActivityDto: CreateActivityDto): Promise<Activity> {
     const activity = this.activityRepository.create();
 
     activity.userId = createActivityDto.userId;
@@ -29,6 +27,8 @@ export class ActivityService {
     activity.likes = createActivityDto.likes;
     activity.liked = createActivityDto.liked;
     activity.src = createActivityDto.src;
+    activity.latitude = createActivityDto.latitude;
+    activity.longitude = createActivityDto.longitude;
 
     return this.activityRepository.save(activity);
   }

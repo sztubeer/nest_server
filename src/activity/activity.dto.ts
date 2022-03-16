@@ -40,7 +40,10 @@ export class CreateActivityDto {
   liked: boolean;
   @ApiProperty({ description: '图片路径' })
   src: string;
-
+  @ApiProperty({ description: '活动地点纬度' })
+  latitude: number;
+  @ApiProperty({ description: '活动地点经度' })
+  longitude: number;
 }
 
 export class UpdateActivityDto {
@@ -73,4 +76,8 @@ export class UpdateActivityDto {
   liked: boolean;
   @ApiProperty({ description: '图片路径' })
   src: string;
+  @ApiProperty({ description: '活动地点纬度' })
+  latitude: number;
+  @ApiProperty({ description: '活动地点经度' })
+  longitude: number;
 }
