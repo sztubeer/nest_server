@@ -16,6 +16,8 @@ import { AuthMiddleware } from './auth/auth.middleware';
 import { Activity } from './activity/activity.entity';
 import { UserInfo } from './user/user-info/user-info.entity';
 import { UserEntity } from './user/user.entity';
+import { ActivityReviewModule } from './activity-review/activity-review.module';
+import { ActivityReview } from './activity-review/entities/activity-review.entity';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { UserEntity } from './user/user.entity';
       password: 'Sztubeer@123',
       database: 'nest',
       // entities: ["dist/**/*.entity{.ts,.js}"],
-      entities: [Activity, UserInfo, UserEntity],
+      entities: [Activity, UserInfo, UserEntity, ActivityReview],
       synchronize: true,
     }),
     CacheModule.register({
@@ -37,6 +39,7 @@ import { UserEntity } from './user/user.entity';
     SharedModule,
     UserModule,
     AuthModule,
+    ActivityReviewModule,
   ],
 
   controllers: [AppController],

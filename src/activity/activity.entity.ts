@@ -83,13 +83,13 @@ export class Activity {
   src: string;
 
   @Column({
-    type: 'point',
+    type:'double',
     comment: '活动地点纬度',
   })
   latitude: number;
 
   @Column({
-    type: 'point',
+    type:'double',
     comment: '活动地点经度',
   })
   longitude: number;
